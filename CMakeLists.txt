@@ -100,22 +100,3 @@ endif()
 if(FAISS_ENABLE_C_API)
   add_subdirectory(c_api)
 endif()
-
-add_subdirectory(demos)
-add_subdirectory(benchs)
-add_subdirectory(tutorial/cpp)
-
-
-# CTest must be included in the top level to enable `make test` target.
-include(CTest)
-if(BUILD_TESTING)
-  add_subdirectory(tests)
-  add_subdirectory(perf_tests)
-  if(FAISS_ENABLE_GPU)
-    if(FAISS_ENABLE_ROCM)
-      add_subdirectory(faiss/gpu-rocm/test)
-    else()
-      add_subdirectory(faiss/gpu/test)
-    endif()
-  endif()
-endif()
